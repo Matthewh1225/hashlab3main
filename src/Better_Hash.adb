@@ -1,5 +1,4 @@
 with Interfaces; use Interfaces;
---hello
 
 package body Better_Hash is
 
