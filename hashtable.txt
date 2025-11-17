@@ -1,100 +1,100 @@
 Bhandari         1 1
-Crouch           96 3
                  0 0
                  0 0
                  0 0
                  0 0
                  0 0
-Dugger           41 2
+                 0 0
+                 0 0
 Daniels          9 1
-Octavio          44 2
-Ajose            90 2
-Alcantara        88 2
+                 0 0
+                 0 0
+                 0 0
 Arauza           13 1
 Farral           14 1
-Clayton          81 2
+                 0 0
 Ellington        16 1
 Salkowski        17 1
 Aguirrie         18 1
                  0 0
                  0 0
-Buck             63 2
-Acevedo          36 3
+                 0 0
+                 0 0
 Robert           23 1
                  0 0
                  0 0
                  0 0
-Corey            39 2
                  0 0
-Nienberg         90 2
-Adam             70 2
+                 0 0
+                 0 0
+Buck             63 2
 Egbe             31 1
-Clark            55 2
-Davies           68 2
-Arauza           13 5
+Gurung           32 1
+                 0 0
+                 0 0
                  0 0
 Acevedo          36 1
-Casper           38 2
+                 0 0
 Casper           38 1
-Carmona          87 2
+Corey            39 1
 Kelly            40 1
 Zulfiqar         41 1
                  0 0
                  0 0
-Dustin           66 3
-Red              96 2
-Judy             61 3
+Octavio          44 1
                  0 0
-Aguirrie         18 3
+                 0 0
+                 0 0
+                 0 0
 Cook             49 1
                  0 0
-Adam             70 2
-                 0 0
-Garza            78 6
-Paschal          72 2
-Ajose            90 2
-Joseph           87 2
-Bhandari         1 2
                  0 0
                  0 0
-Gurung           32 2
-Octavio          44 4
-Zulfiqar         41 3
+                 53 1
+                 0 0
+Clark            55 1
+                 0 0
+                 0 0
+                 0 0
+                 0 0
+                 0 0
+Judy             61 1
+                 0 0
 Qamruddin        63 1
-Buck             63 2
-Daniels          9 3
+                 0 0
+                 0 0
 Dustin           66 1
-Ellington        16 2
+Crouch           96 2
 Davies           68 1
-Gurung           32 2
-Egbe             31 2
-Scott            74 4
+                 0 0
+Adam             70 1
+                 0 0
 Paschal          72 1
                  0 0
-Robert           23 2
+Scott            74 1
                  0 0
                  0 0
-                 0 0
+Joseph           87 2
 Garza            78 1
-Kyle             85 4
+                 0 0
                  0 0
 Clayton          81 1
-Scott            74 3
-Dugger           41 7
-Crouch           96 3
+                 0 0
+                 0 0
+Ajose            90 2
 Kyle             85 1
-Kelly            40 2
+                 0 0
 Carmona          87 1
 Alcantara        88 1
-Joseph           87 2
+                 0 0
 Nienberg         90 1
-Clark            55 3
-Salkowski        17 3
-Judy             61 4
-Corey            39 5
+                 0 0
+                 0 0
+                 0 0
+                 0 0
                  0 0
 Red              96 1
-Cook             49 2
-Farral           14 3
-Derek            81 6
-Qamruddin        63 4
+Dugger           41 2
+                 0 0
+                 0 0
+                 0 0
