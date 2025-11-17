@@ -1,16 +1,12 @@
-with Ada.Direct_IO;
-
 package Hash_Table is
    
    Table_Size : constant Positive := 100;
 
    type Hash_Record is record
-      key : String(1..16);
-      initial_hash : Integer;
-      probe_count : Integer;
+      Stored_Key          : String(1 .. 16);
+      Initial_Hash_Index  : Integer;
+      Probe_Count         : Integer;
    end record;
-   
-   package Hash_IO is new Ada.Direct_IO(Hash_Record);
    
    type Probe_Method is (Linear, Random_Probe);
    type Hash_Function_Type is (Original_Hash, Pair_Hash);

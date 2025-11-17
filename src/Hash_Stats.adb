@@ -1,4 +1,5 @@
 with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Numerics.Elementary_Functions;
 with Hash_Table; use Hash_Table;
 with Key_Loader; use Key_Loader;
 
@@ -12,6 +13,7 @@ package body Hash_Stats is
       last_25_avg : Float;
       all_75_avg : Float;
       theoretical : Float;
+      theoretical_random : Float;
       first_25_min : Integer;
       first_25_max : Integer;
       last_25_min : Integer;
@@ -77,16 +79,14 @@ package body Hash_Stats is
       Load_Factor    : constant Float := 0.75;
       First_Block_End : constant Positive := 25;
       Last_Block_Start : constant Positive := 51;
-      procedure Show_Header is
-      begin
-         Put_Line("\n========================================");
-         Put_Line(storage_label & " :: " & hash_name & " + " & method_name & " PROBING");
-         Put_Line("========================================");
-         New_Line;
-      end Show_Header;
    begin
       Set_Storage_Mode(table_storage);
-      Show_Header;
+      
+      -- Print test header
+      Put_Line("\n========================================");
+      Put_Line(storage_label & " :: " & hash_name & " + " & method_name & " PROBING");
+      Put_Line("========================================");
+      New_Line;
 
       Set_Hash_Function(hash_func);
       Set_Probe_Method(method);
@@ -97,6 +97,20 @@ package body Hash_Stats is
       end loop;
 
       Put_Line("Inserted 75 keys into hash table");
+      New_Line;
+
+      Put_Line("=== HASH FUNCTION DETAILS ===");
+      if hash_func = Original_Hash then
+         Put_Line("Algorithm: BurrisHash - uses char positions 1,5 and pairs 3-4, 5-6");
+         Put_Line("Formula: HA = (char[1] + char[5])/517 + pair[3:4]/217 + pair[5:6]/256");
+         Put_Line("Characteristic: Simple arithmetic with fixed divisors, may cluster");
+      else
+         Put_Line("Algorithm: YourHash - sequential pair accumulation with weighted sum");
+         Put_Line("Strategy: 8 character pairs (1-2, 3-4, ... 15-16) weighted by primes");
+         Put_Line("Weights: [131, 113, 101, 89, 79, 71, 61, 53] - descending for balance");
+         Put_Line("Method: Each pair combined (left*256 + right) and multiplied by weight");
+         Put_Line("Goal: Better distribution across table, reduce clustering");
+      end if;
       New_Line;
 
       stats.first_25_min := Integer'Last;
@@ -122,7 +136,24 @@ package body Hash_Stats is
       stats.first_25_avg := Float(first_total) / 25.0;
       stats.last_25_avg := Float(last_total) / 25.0;
       stats.all_75_avg := Float(total_probes) / 75.0;
-      stats.theoretical := 0.5 * (1.0 + 1.0 / (1.0 - Load_Factor));
+      
+      -- Theoretical formulas for successful search
+      stats.theoretical := 0.5 * (1.0 + 1.0 / (1.0 - Load_Factor));  -- Linear probing
+      stats.theoretical_random := -1.0 / Load_Factor * Ada.Numerics.Elementary_Functions.Log(1.0 - Load_Factor, 10.0);  -- Random probing
+
+      Put_Line("=== DISTRIBUTION METRICS ===");
+      Put("Keys inserted: 75  |  Table size: ");
+      Int_IO.Put(Table_Size, Width => 0);
+      Put("  |  Load factor: ");
+      Float_IO.Put(Load_Factor, Fore => 1, Aft => 2, Exp => 0);
+      New_Line;
+      Put("Total probes for all searches: ");
+      Int_IO.Put(total_probes, Width => 0);
+      New_Line;
+      Put("Clustering indicator (last/first avg ratio): ");
+      Float_IO.Put(stats.last_25_avg / stats.first_25_avg, Fore => 1, Aft => 2, Exp => 0);
+      Put_Line(" (>1.0 shows increasing collisions)");
+      New_Line;
 
       Put_Line("=== FIRST 25 KEYS ===");
       Put("Minimum probes: "); Int_IO.Put(stats.first_25_min, Width => 0); New_Line;
@@ -138,7 +169,8 @@ package body Hash_Stats is
 
       Put_Line("=== THEORETICAL RESULTS (75 keys) ===");
       Put("Load factor (alpha): "); Float_IO.Put(Load_Factor, Fore => 1, Aft => 3, Exp => 0); New_Line;
-      Put("Theoretical avg probes (successful): "); Float_IO.Put(stats.theoretical, Fore => 1, Aft => 2, Exp => 0); New_Line;
+      Put("Theoretical avg probes (Linear): "); Float_IO.Put(stats.theoretical, Fore => 1, Aft => 2, Exp => 0); New_Line;
+      Put("Theoretical avg probes (Random): "); Float_IO.Put(stats.theoretical_random, Fore => 1, Aft => 2, Exp => 0); New_Line;
       New_Line;
 
       Put_Line("=== ALL 75 KEYS ACTUAL RESULTS ===");
@@ -210,6 +242,10 @@ package body Hash_Stats is
       Put("| Theoretical (Linear)|              |                  ");
       Float_IO.Put(Burris_Linear_Stats.theoretical, Fore => 1, Aft => 2, Exp => 0);
       Put_Line("                 |");
+      
+      Put("| Theoretical (Random)|              |                  ");
+      Float_IO.Put(Burris_Random_Stats.theoretical_random, Fore => 1, Aft => 2, Exp => 0);
+      Put_Line("                 |");
 
       Put_Line("+---------------------+--------------+------------------------------------------+");
       New_Line;
@@ -239,7 +275,7 @@ package body Hash_Stats is
          Float_IO.Put(Relative_Avg, Fore => 1, Aft => 2, Exp => 0);
          Put("  |  Memory=");
          Float_IO.Put(Memory_Avg, Fore => 1, Aft => 2, Exp => 0);
-         Put("  |  Delta=");
+         Put("  |  Difference=");
          Float_IO.Put(Difference, Fore => 1, Aft => 2, Exp => 0);
          New_Line;
       end Print_Mode_Line;
