@@ -3,9 +3,9 @@ package Hash_Table is
    Table_Size : constant Positive := 100;
 
    type Hash_Record is record
-      Stored_Key          : String(1 .. 16);
-      Initial_Hash_Index  : Integer;
-      Probe_Count         : Integer;
+      Stored_Key          : String(1 .. 16) := (others => ' ');
+      Initial_Hash_Index  : Integer := 0;
+      Probe_Count         : Integer := 0;
    end record;
    
    type Probe_Method is (Linear, Random_Probe);
@@ -16,8 +16,8 @@ package Hash_Table is
    procedure Set_Hash_Function(hash_func : Hash_Function_Type);
    procedure Set_Storage_Mode(mode : Storage_Mode);
    procedure Create_Table;
-   procedure Insert_Key(key : String);
-   function Search_Key(key : String) return Integer;
+   procedure Insert_Key(Key_Value : String);
+   function Search_Key(Key_Value : String) return Integer;
    procedure Dump_Table(header : String);
    procedure Close_Table;
    

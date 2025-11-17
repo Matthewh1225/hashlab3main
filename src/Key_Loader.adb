@@ -30,6 +30,7 @@ package body Key_Loader is
          Key_Buffer := (others => ' ');
          Get_Line(Source_File, Key_Buffer, Last_Character_Index);
 
+         -- Treat all-digit lines as record-length indicators rather than keys
          if not Is_Record_Length_Indicator(Key_Buffer, Last_Character_Index) then
             Loaded_Key_Count := Loaded_Key_Count + 1;
             Items(Loaded_Key_Count) := Key_Buffer;
