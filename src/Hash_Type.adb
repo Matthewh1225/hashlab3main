@@ -1,39 +1,33 @@
+with Interfaces; use Interfaces;
+
 package body Hash_Type is
-
-   subtype Hash_Sum is Long_Long_Integer;
-
-   function Pair_Value(Key : String; Left_Index : Integer) return Hash_Sum is
+--convert/sum pair of chars to long long int
+   function Pair_Value(Key : String; Left_Index :Integer) return Long_Long_Integer is
    begin
-      return Hash_Sum(Character'Pos(Key(Left_Index))) * 256 +
-             Hash_Sum(Character'Pos(Key(Left_Index + 1)));
+      return Long_Long_Integer(Character'Pos(Key(Left_Index))) * 256+ Long_Long_Integer(Character'Pos(Key(Left_Index + 1)));
    end Pair_Value;
+   pragma Inline(Pair_Value);
 
-   function BurrisHash (Key : String) return Integer is
-      Start_Position : constant Integer := Key'First;
-      First_Char     : constant Hash_Sum := Hash_Sum(Character'Pos(Key(Start_Position)));
-      Fifth_Char     : constant Hash_Sum := Hash_Sum(Character'Pos(Key(Start_Position + 4)));
-      Third_Fourth   : constant Hash_Sum := Pair_Value(Key, Start_Position + 2);
-      Fifth_Sixth    : constant Hash_Sum := Pair_Value(Key, Start_Position + 4);
-      Burris_Result : Hash_Sum;
+   function BurrisHash (Key :String) return Integer is
+      Pos : constant Integer := Key'First;
    begin
-      -- HA = abs( (str(1:1) + str(5:5)) / 517 + str(3:4) / 217 + str(5:6) / 256 )
-      Burris_Result := abs((First_Char + Fifth_Char) / 517 + Third_Fourth / 217 + Fifth_Sixth / 256);
-      return Integer(Burris_Result);
+      --HA = abs( (str(1:1) + str(5:5)) / 517 + str(3:4) / 217 + str(5:6) / 256 )
+      return Integer(abs((Long_Long_Integer(Character'Pos(Key(Pos)))+ Long_Long_Integer(Character'Pos(Key(Pos + 4)))) / 517 + Pair_Value(Key, Pos + 2) / 217 + Pair_Value(Key, Pos + 4) / 256));
    end BurrisHash;
-
+   --pair chars, multiply by weights, bit shift, then mod into final hash
    procedure Pair_Hash (Key : String; Hash_Index : out Integer) is
-      Weights : constant array (0 .. 7) of Integer :=
-        (131, 113, 101, 89, 79, 71, 61, 53);
-      Weighted_Sum : Hash_Sum := 0;
+   --array of prime weights for each pair,decendin
+      Weights : constant array (0 .. 7) of Integer:=(191,167,131,83,59,31,17,7);
+      Sum : Unsigned_64:= 0;
    begin
-      -- Sequential pairing: (1,2), (3,4), ... (15,16)
-      -- Each pair weighted by descending prime for better distribution
-      for Pair_Index in 0 .. 7 loop
-         Weighted_Sum := Weighted_Sum + 
-           Pair_Value(Key, Key'First + Pair_Index * 2) * Hash_Sum(Weights(Pair_Index));
+      for I in 0 .. 7 loop
+         Sum:= Sum + Unsigned_64(Pair_Value(Key, Key'First + I * 2) * Long_Long_Integer(Weights(I)));
+         -- right shift by 5 bits
+         Sum := Sum xor (Sum / 2**7);
+         --left shift by 15 bits
+         Sum:=Sum xor (Sum * 2**13);
       end loop;
-      
-      Hash_Index := Integer(abs(Weighted_Sum));
+      Hash_Index := Integer(abs(Long_Long_Integer(Sum mod 2**7)));
    end Pair_Hash;
 
 end Hash_Type;

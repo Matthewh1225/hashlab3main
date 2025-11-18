@@ -17,38 +17,29 @@ package body Hash_Table is
    package Probe_Offsets is new Ada.Numerics.Discrete_Random(Offset_Range);
    Probe_Generator : Probe_Offsets.Generator;
 
-   Empty_Key    : constant String(1 .. 16) := (others => ' ');
+   Empty_Key    : constant String(1 .. 16):= (others => ' ');
    Empty_Record : constant Hash_Record :=
      (Stored_Key => Empty_Key,
-      Initial_Hash_Index => 0,
+      Initial_Hash_Index=> 0,
       Probe_Count => 0);
 
    Active_Probe_Method  : Probe_Method := Linear;
    Active_Hash_Function : Hash_Function_Type := Original_Hash;
    Active_Storage_Mode  : Storage_Mode := Relative_File;
 
-   Memory_Table : array (Slot_Index) of Hash_Record := (others => Empty_Record);
+   Memory_Hash_Table : array (Slot_Index) of Hash_Record := (others => Empty_Record);
 
    procedure Initialize_Relative_File is
    begin
-      if File_Is_Open then
-         Relative_File_IO.Close(Hash_File);
-         File_Is_Open := False;
-      end if;
-
       Relative_File_IO.Create(Hash_File, Relative_File_IO.Inout_File, "hash_table.dat");
-      File_Is_Open := True;
+      File_Is_Open:= True;
       for Slot in Slot_Index loop
          Relative_File_IO.Write(Hash_File, Empty_Record);
       end loop;
       Relative_File_IO.Reset(Hash_File, Relative_File_IO.Inout_File);
    end Initialize_Relative_File;
 
-   function Is_Empty(Slot_Value : Hash_Record) return Boolean is
-   begin
-      return Slot_Value.Stored_Key = Empty_Key;
-   end Is_Empty;
-
+   --calcualte next slot based on probe method
    function Next_Slot(Current_Slot : Slot_Index) return Slot_Index is
    begin
       if Active_Probe_Method = Linear then
@@ -62,22 +53,21 @@ package body Hash_Table is
       Base_Value : Integer;
    begin
       case Active_Hash_Function is
-         when Original_Hash =>
-            Base_Value := Hash_Type.BurrisHash(Key_Value);
-         when Pair_Hash =>
-            Hash_Type.Pair_Hash(Key_Value, Base_Value);
+         when Original_Hash=> Base_Value := Hash_Type.BurrisHash(Key_Value);
+         when Pair_Hash => Hash_Type.Pair_Hash(Key_Value, Base_Value);
       end case;
 
       return Slot_Index((abs(Base_Value) mod Table_Size) + 1);
    end Hash_Function;
 
+   --read slot data from storage (file or memory)
    procedure Read_Slot(Slot : Slot_Index; Data : out Hash_Record) is
    begin
       if Active_Storage_Mode = Relative_File then
          Relative_File_IO.Set_Index(Hash_File, Relative_File_IO.Positive_Count(Slot));
          Relative_File_IO.Read(Hash_File, Data);
       else
-         Data := Memory_Table(Slot);
+         Data:= Memory_Hash_Table(Slot);
       end if;
    end Read_Slot;
 
@@ -87,7 +77,7 @@ package body Hash_Table is
          Relative_File_IO.Set_Index(Hash_File, Relative_File_IO.Positive_Count(Slot));
          Relative_File_IO.Write(Hash_File, Data);
       else
-         Memory_Table(Slot) := Data;
+         Memory_Hash_Table(Slot):= Data;
       end if;
    end Write_Slot;
 
@@ -116,20 +106,20 @@ package body Hash_Table is
          Initialize_Relative_File;
       else
          for Slot in Slot_Index loop
-            Memory_Table(Slot) := Empty_Record;
+            Memory_Hash_Table(Slot) := Empty_Record;
          end loop;
       end if;
    end Create_Table;
 
    procedure Insert_Key(Key_Value : String) is
-      Initial_Slot : constant Slot_Index := Hash_Function(Key_Value);
-      Current_Slot : Slot_Index := Initial_Slot;
+      Initial_Slot : constant Slot_Index:= Hash_Function(Key_Value);
+      Current_Slot :Slot_Index:= Initial_Slot;
       Probes_Taken : Integer := 1;
-      Slot_Data    : Hash_Record;
+      Slot_Data : Hash_Record;
    begin
       loop
          Read_Slot(Current_Slot, Slot_Data);
-         exit when Is_Empty(Slot_Data);
+         exit when Slot_Data.Stored_Key = Empty_Key;
 
          Probes_Taken := Probes_Taken + 1;
          Current_Slot := Next_Slot(Current_Slot);
@@ -141,14 +131,16 @@ package body Hash_Table is
       Write_Slot(Current_Slot, Slot_Data);
    end Insert_Key;
 
+   --search for key and return number of probes needed
    function Search_Key(Key_Value : String) return Integer is
-      Current_Slot : Slot_Index := Hash_Function(Key_Value);
+      Current_Slot : Slot_Index:= Hash_Function(Key_Value);
       Slot_Data    : Hash_Record;
    begin
       for Probes in 1 .. Table_Size loop
          Read_Slot(Current_Slot, Slot_Data);
 
-         if Slot_Data.Stored_Key = Key_Value or else Is_Empty(Slot_Data) then
+         --check for match or empty slot for comparision
+         if Slot_Data.Stored_Key = Key_Value or else Slot_Data.Stored_Key = Empty_Key then
             return Probes;
          end if;
 
@@ -159,44 +151,26 @@ package body Hash_Table is
    end Search_Key;
 
    procedure Dump_Table(header : String) is
-         Slot_Data   : Hash_Record;
-         Print_Limit : constant Integer := Integer'Min(Table_Size, 128);
-         subtype Output_Slots is Slot_Index
-            range Slot_Index'First .. Slot_Index(Print_Limit);
+      Slot_Data : Hash_Record;
    begin
       Put_Line("=== " & header & " ===");
       Put_Line("Hash      Contents at          Original hash    Final hash    Number of probes");
       Put_Line("address   the address          address          address       to store/retrieve");
       Put_Line("--------------------------------------------------------------------------------");
 
-      for Slot_Number in Output_Slots loop
+      for Slot_Number in Slot_Index loop
          Read_Slot(Slot_Number, Slot_Data);
 
          Int_IO.Put(Slot_Number, Width => 4);
          Put("      ");
 
-         if Is_Empty(Slot_Data) then
-            Put("                    ");
-         else
+         if Slot_Data.Stored_Key /= Empty_Key then
             Put(Slot_Data.Stored_Key);
             Put("    ");
-         end if;
-
-         if Is_Empty(Slot_Data) then
-            Put("                 ");
-         else
             Int_IO.Put(Slot_Data.Initial_Hash_Index, Width => 4);
             Put("             ");
-         end if;
-
-         if Is_Empty(Slot_Data) then
-            Put("              ");
-         else
             Int_IO.Put(Slot_Number, Width => 4);
             Put("          ");
-         end if;
-
-         if not Is_Empty(Slot_Data) then
             Int_IO.Put(Slot_Data.Probe_Count, Width => 4);
          end if;
 
