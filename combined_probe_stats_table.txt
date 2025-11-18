@@ -1,0 +1,48 @@
+========================================
+SECTION 1: RESULTS TABLE
+Combined Probe Stats
+========================================
+
++-------------+---------------+--------------+-----------+-----------+-----------+--------------+
+| Storage     | Hash          | Probing      | 0-25      | 50-75     | All 75    | Theoretical  |
+| Mode        | Function      | Method       | insert    | insert    | Avg       | Avg          |
+|             |               |              | avg       | avg       |           |              |
++-------------+---------------+--------------+-----------+-----------+-----------+--------------+
+| Relative    | BurrisHash    | Linear       | 1.36      | 28.28     | 14.28     | 2.50         |
+| File        |               |              |           |           |           |              |
++-------------+---------------+--------------+-----------+-----------+-----------+--------------+
+| Relative    | BurrisHash    | Random       | 1.48      | 3.64      | 3.12      | 1.85         |
+| File        |               |              |           |           |           |              |
++-------------+---------------+--------------+-----------+-----------+-----------+--------------+
+| Relative    | Pair_Hash     | Linear       | 1.16      | 2.40      | 1.71      | 2.50         |
+| File        |               |              |           |           |           |              |
++-------------+---------------+--------------+-----------+-----------+-----------+--------------+
+| Relative    | Pair_Hash     | Random       | 1.20      | 2.88      | 1.87      | 1.85         |
+| File        |               |              |           |           |           |              |
++-------------+---------------+--------------+-----------+-----------+-----------+--------------+
+| Main        | BurrisHash    | Linear       | 1.36      | 28.28     | 14.28     | 2.50         |
+| Memory      |               |              |           |           |           |              |
++-------------+---------------+--------------+-----------+-----------+-----------+--------------+
+| Main        | BurrisHash    | Random       | 1.56      | 3.52      | 3.21      | 1.85         |
+| Memory      |               |              |           |           |           |              |
++-------------+---------------+--------------+-----------+-----------+-----------+--------------+
+| Main        | Pair_Hash     | Linear       | 1.16      | 2.40      | 1.71      | 2.50         |
+| Memory      |               |              |           |           |           |              |
++-------------+---------------+--------------+-----------+-----------+-----------+--------------+
+| Main        | Pair_Hash     | Random       | 1.44      | 3.20      | 2.12      | 1.85         |
+| Memory      |               |              |           |           |           |              |
++-------------+---------------+--------------+-----------+-----------+-----------+--------------+
+
+Notes:
+- 0-25 insert avg: Average probes for first 25 keys inserted
+- 50-75 insert avg: Average probes for last 25 keys inserted (keys 51-75)
+- All 75 Avg: Average probes across all 75 keys
+- Theoretical Avg: Expected average based on load factor (alpha = 0.75)
+  * Linear probing theoretical: 2.50
+  * Random probing theoretical: 1.85
+
+Key Findings:
+- Pair_Hash significantly outperforms BurrisHash in all configurations
+- Linear probing with Pair_Hash beats theoretical expectations
+- BurrisHash Linear shows severe degradation (14.28 vs 2.50 theoretical)
+- Storage mode (File vs Memory) has minimal impact on performance

@@ -1,0 +1,1224 @@
+Note: Building hashlab3main=0.1.0-dev/hashlab3main.gpr...
+gprbuild: "hashlab3main" up to date
+Success: Build finished successfully in 0.66 seconds.
+\n========================================
+Relative File :: BurrisHash (Orig) + LINEAR PROBING
+========================================
+
+Inserted 75 keys into hash table
+
+=== HASH FUNCTION DETAILS ===
+Algorithm: BurrisHash - uses char positions 1,5 and pairs 3-4, 5-6
+Formula: HA = (char[1] + char[5])/517 + pair[3:4]/2**17 + pair[5:6]/256
+Characteristic: Simple arithmetic with fixed divisors, may cluster
+
+=== DISTRIBUTION METRICS ===
+Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
+Total probes for all searches: 1590
+Clustering indicator (last/first avg ratio): 14.49 (>1.0 shows increasing collisions)
+
+=== FIRST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 19
+Average probes: 3.04
+
+=== LAST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 68
+Average probes: 44.04
+
+=== THEORETICAL RESULTS (75 keys) ===
+Load factor (alpha): 0.750
+Theoretical avg probes (Linear): 2.50
+Theoretical avg probes (Random): 0.80
+
+=== ALL 75 KEYS ACTUAL RESULTS ===
+Actual average probes (all 75 keys): 21.20
+
+EMPIRICAL vs THEORETICAL ANALYSIS:
+With load factor 0.75, linear probing shows clustering.
+Later insertions encounter more collisions.
+Empirical results may vary from theoretical due to
+hash function distribution and clustering effects.
+
+=== Relative File | BurrisHash (Orig) + LINEAR Probing ===
+Hash      Contents at          Original hash    Final hash    Number of probes
+address   the address          address          address       to store/retrieve
+--------------------------------------------------------------------------------
+   1      Bhandari               1                1             1
+   2      Casper                 2                2             1
+   3      Daniels                2                3             2
+   4      Acevedo                2                4             3
+   5      Paschal                5                5             1
+   6      Zulfiqar               6                6             1
+   7      Ajose                  2                7             6
+   8      Clark                  8                8             1
+   9      Davies                 2                9             8
+  10      Dugger                 2               10             9
+  11      Alcantara             11               11             1
+  12      Carmona               12               12             1
+  13      Salkowski             12               13             2
+  14      Ellington             11               14             4
+  15      Aguirrie              15               15             1
+  16      Garza                 98               16            19
+  17      Gurung                11               17             7
+  18      Qamruddin             18               18             1
+  19      Joseph                13               19             7
+  20      Clayton               17               20             4
+  21      Dustin                 6               21            16
+  22      Kelly                 22               22             1
+  23      Arauza                23               23             1
+  24      Corey                 22               24             3
+  25      Robert                15               25            11
+  26      Scott                 17               26            10
+  27      Octavio               19               27             9
+  28      Derek                  8               28            21
+  29      Jeffrey               15               29            15
+  30      Jordon                12               30            19
+  31      Vinnela                2               31            30
+  32      Veronica              11               32            22
+  33      Cook                  33               33             1
+  34      Red                   33               34             2
+  35      Buck                  33               35             3
+  36      Egbe                  33               36             4
+  37      Adam                  33               37             5
+  38      Kyle                  33               38             6
+  39      Judy                  33               39             7
+  40      Lisa                  33               40             8
+  41      Todd                  33               41             9
+  42      Matthew                5               42            38
+  43      Michael               98               43            46
+  44      Akhila                 9               44            36
+  45      John                  33               45            13
+  46      Charles                9               46            38
+  47      James                 16               47            32
+  48      Chris                 16               48            33
+  49      Wade                  33               49            17
+  50      Christopher           16               50            35
+  51      Fernando              98               51            54
+  52      Batbold               12               52            41
+  53      Joel                  33               53            21
+  54      Fabulous               9               54            46
+  55      Misogamist             4               55            52
+  56      Maiden                 2               56            55
+  57      Eye                   33               57            25
+  58      Constriction          17               58            42
+  59      Necromancer           12               59            48
+  60      Syncopate             12               60            49
+  61      Yolk                  33               61            29
+  62      Afterwards            15               62            48
+  63      Person                12               63            52
+  64      Northwest              5               64            60
+  65      Irreversible          19               65            47
+  66      Fabricate              6               66            61
+  67      Honor                 15               67            53
+  68      Staple                 9               68            60
+  69      Under                 15               69            55
+  70      Jutty                 22               70            49
+  71      Finagle                4               71            68
+  72      Cook                  33               72            40
+  73      
+  74      
+  75      
+  76      
+  77      
+  78      
+  79      
+  80      
+  81      
+  82      
+  83      
+  84      
+  85      
+  86      
+  87      
+  88      
+  89      
+  90      
+  91      
+  92      
+  93      
+  94      
+  95      
+  96      
+  97      
+  98      Farral                98               98             1
+  99      Nienberg              99               99             1
+ 100      Crouch               100              100             1
+
+\n========================================
+Relative File :: BurrisHash (Orig) + RANDOM PROBING
+========================================
+
+Inserted 75 keys into hash table
+
+=== HASH FUNCTION DETAILS ===
+Algorithm: BurrisHash - uses char positions 1,5 and pairs 3-4, 5-6
+Formula: HA = (char[1] + char[5])/517 + pair[3:4]/217 + pair[5:6]/256
+Characteristic: Simple arithmetic with fixed divisors, may cluster
+
+=== DISTRIBUTION METRICS ===
+Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
+Total probes for all searches: 328
+Clustering indicator (last/first avg ratio): 2.11 (>1.0 shows increasing collisions)
+
+=== FIRST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 20
+Average probes: 2.88
+
+=== LAST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 24
+Average probes: 6.08
+
+=== THEORETICAL RESULTS (75 keys) ===
+Load factor (alpha): 0.750
+Theoretical avg probes (Linear): 2.50
+Theoretical avg probes (Random): 0.80
+
+=== ALL 75 KEYS ACTUAL RESULTS ===
+Actual average probes (all 75 keys): 4.37
+
+EMPIRICAL vs THEORETICAL ANALYSIS:
+With load factor 0.75, linear probing shows clustering.
+Later insertions encounter more collisions.
+Empirical results may vary from theoretical due to
+hash function distribution and clustering effects.
+
+=== Relative File | BurrisHash (Orig) + RANDOM Probing ===
+Hash      Contents at          Original hash    Final hash    Number of probes
+address   the address          address          address       to store/retrieve
+--------------------------------------------------------------------------------
+   1      Bhandari               1                1             1
+   2      Casper                 2                2             1
+   3      Fabulous               9                3             2
+   4      Red                   33                4             2
+   5      Paschal                5                5             1
+   6      Zulfiqar               6                6             1
+   7      Staple                 9                7             3
+   8      Clark                  8                8             1
+   9      Davies                 2                9             4
+  10      Jutty                 22               10             3
+  11      Alcantara             11               11             1
+  12      Carmona               12               12             1
+  13      Egbe                  33               13             2
+  14      Acevedo                2               14             2
+  15      Aguirrie              15               15             1
+  16      James                 16               16             1
+  17      Clayton               17               17             1
+  18      Qamruddin             18               18             1
+  19      Octavio               19               19             1
+  20      Dugger                 2               20             2
+  21      Maiden                 2               21             3
+  22      Buck                  33               22             2
+  23      Arauza                23               23             1
+  24      Ellington             11               24             2
+  25      Fernando              98               25             2
+  26      
+  27      
+  28      Jeffrey               15               28             3
+  29      
+  30      
+  31      Ajose                  2               31             2
+  32      
+  33      Cook                  33               33             1
+  34      Chris                 16               34             2
+  35      
+  36      Constriction          17               36             8
+  37      
+  38      Corey                 22               38             3
+  39      Daniels                2               39             2
+  40      
+  41      Vinnela                2               41             2
+  42      Judy                  33               42             3
+  43      Kyle                  33               43             3
+  44      Kelly                 22               44             2
+  45      Veronica              11               45             2
+  46      
+  47      
+  48      
+  49      
+  50      Dustin                 6               50             2
+  51      
+  52      
+  53      Person                12               53             2
+  54      Adam                  33               54             2
+  55      
+  56      
+  57      
+  58      Necromancer           12               58             2
+  59      Joseph                13               59             2
+  60      Matthew                5               60             4
+  61      
+  62      Batbold               12               62             3
+  63      
+  64      
+  65      
+  66      Cook                  33               66             6
+  67      Todd                  33               67             2
+  68      
+  69      Derek                  8               69             2
+  70      Syncopate             12               70             3
+  71      Charles                9               71             5
+  72      Gurung                11               72             2
+  73      Fabricate              6               73             3
+  74      Jordon                12               74             5
+  75      Honor                 15               75             5
+  76      
+  77      
+  78      Irreversible          19               78            12
+  79      Michael               98               79             4
+  80      Eye                   33               80             4
+  81      Akhila                 9               81             2
+  82      Lisa                  33               82             2
+  83      Northwest              5               83             2
+  84      Salkowski             12               84             2
+  85      Finagle                4               85             3
+  86      Under                 15               86             3
+  87      Robert                15               87             3
+  88      Joel                  33               88             2
+  89      Garza                 98               89             2
+  90      Misogamist             4               90             3
+  91      Scott                 17               91             3
+  92      Afterwards            15               92             5
+  93      Christopher           16               93             4
+  94      Yolk                  33               94             2
+  95      John                  33               95             2
+  96      
+  97      Wade                  33               97             2
+  98      Farral                98               98             1
+  99      Nienberg              99               99             1
+ 100      Crouch               100              100             1
+
+\n========================================
+Relative File :: YourHash (Pair) + LINEAR PROBING
+========================================
+
+Inserted 75 keys into hash table
+
+=== HASH FUNCTION DETAILS ===
+Algorithm: YourHash - sequential pair accumulation with weighted sum
+Strategy: 8 character pairs (1-2, 3-4, ... 15-16) weighted by primes
+Weights: [131, 113, 101, 89, 79, 71, 61, 53] - descending for balance
+Method: Each pair combined (left*256 + right) and multiplied by weight
+Goal: Better distribution across table, reduce clustering
+
+=== DISTRIBUTION METRICS ===
+Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
+Total probes for all searches: 128
+Clustering indicator (last/first avg ratio): 2.07 (>1.0 shows increasing collisions)
+
+=== FIRST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 3
+Average probes: 1.16
+
+=== LAST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 7
+Average probes: 2.40
+
+=== THEORETICAL RESULTS (75 keys) ===
+Load factor (alpha): 0.750
+Theoretical avg probes (Linear): 2.50
+Theoretical avg probes (Random): 0.80
+
+=== ALL 75 KEYS ACTUAL RESULTS ===
+Actual average probes (all 75 keys): 1.71
+
+EMPIRICAL vs THEORETICAL ANALYSIS:
+With load factor 0.75, linear probing shows clustering.
+Later insertions encounter more collisions.
+Empirical results may vary from theoretical due to
+hash function distribution and clustering effects.
+
+=== Relative File | YourHash (Pair) + LINEAR Probing ===
+Hash      Contents at          Original hash    Final hash    Number of probes
+address   the address          address          address       to store/retrieve
+--------------------------------------------------------------------------------
+   1      
+   2      
+   3      Afterwards             3                3             1
+   4      Christopher            4                4             1
+   5      
+   6      Corey                  6                6             1
+   7      Wade                   6                7             2
+   8      Batbold                7                8             2
+   9      Person                 7                9             3
+  10      Charles               10               10             1
+  11      
+  12      Bhandari              12               12             1
+  13      Vinnela               12               13             2
+  14      Clayton               14               14             1
+  15      
+  16      Jordon                16               16             1
+  17      
+  18      
+  19      Zulfiqar              19               19             1
+  20      
+  21      Finagle               21               21             1
+  22      
+  23      
+  24      Carmona               24               24             1
+  25      Red                   25               25             1
+  26      Robert                26               26             1
+  27      Cook                  27               27             1
+  28      Judy                  28               28             1
+  29      Lisa                  25               29             5
+  30      James                 25               30             6
+  31      Syncopate             26               31             6
+  32      Northwest             26               32             7
+  33      Derek                 33               33             1
+  34      Irreversible          28               34             7
+  35      Cook                  27               35             9
+  36      Fabricate             36               36             1
+  37      Jutty                 36               37             2
+  38      Clark                 38               38             1
+  39      Qamruddin             39               39             1
+  40      Honor                 39               40             2
+  41      Scott                 41               41             1
+  42      
+  43      Paschal               43               43             1
+  44      Dugger                43               44             2
+  45      Alcantara             45               45             1
+  46      Egbe                  44               46             3
+  47      Joel                  45               47             3
+  48      
+  49      Buck                  49               49             1
+  50      Fabulous              50               50             1
+  51      
+  52      Aguirrie              52               52             1
+  53      
+  54      Jeffrey               54               54             1
+  55      Eye                   54               55             2
+  56      Staple                55               56             2
+  57      
+  58      John                  58               58             1
+  59      Kyle                  59               59             1
+  60      Todd                  60               60             1
+  61      Chris                 61               61             1
+  62      
+  63      Akhila                63               63             1
+  64      Gurung                64               64             1
+  65      Veronica              64               65             2
+  66      
+  67      Kelly                 67               67             1
+  68      Michael               68               68             1
+  69      Octavio               69               69             1
+  70      Crouch                70               70             1
+  71      
+  72      Ellington             72               72             1
+  73      Garza                 73               73             1
+  74      Nienberg              74               74             1
+  75      Dustin                72               75             4
+  76      Casper                76               76             1
+  77      Maiden                76               77             2
+  78      Yolk                  76               78             3
+  79      Matthew               79               79             1
+  80      Necromancer           79               80             2
+  81      Arauza                81               81             1
+  82      Davies                82               82             1
+  83      Under                 83               83             1
+  84      Farral                84               84             1
+  85      Salkowski             85               85             1
+  86      Acevedo               85               86             2
+  87      Fernando              87               87             1
+  88      Constriction          84               88             5
+  89      
+  90      
+  91      
+  92      Ajose                 92               92             1
+  93      
+  94      Misogamist            94               94             1
+  95      Joseph                95               95             1
+  96      Daniels               96               96             1
+  97      
+  98      Adam                  98               98             1
+  99      
+ 100      
+
+\n========================================
+Relative File :: YourHash (Pair) + RANDOM PROBING
+========================================
+
+Inserted 75 keys into hash table
+
+=== HASH FUNCTION DETAILS ===
+Algorithm: YourHash - sequential pair accumulation with weighted sum
+Strategy: 8 character pairs (1-2, 3-4, ... 15-16) weighted by primes
+Weights: [131, 113, 101, 89, 79, 71, 61, 53] - descending for balance
+Method: Each pair combined (left*256 + right) and multiplied by weight
+Goal: Better distribution across table, reduce clustering
+
+=== DISTRIBUTION METRICS ===
+Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
+Total probes for all searches: 154
+Clustering indicator (last/first avg ratio): 2.63 (>1.0 shows increasing collisions)
+
+=== FIRST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 5
+Average probes: 1.20
+
+=== LAST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 13
+Average probes: 3.16
+
+=== THEORETICAL RESULTS (75 keys) ===
+Load factor (alpha): 0.750
+Theoretical avg probes (Linear): 2.50
+Theoretical avg probes (Random): 0.80
+
+=== ALL 75 KEYS ACTUAL RESULTS ===
+Actual average probes (all 75 keys): 2.05
+
+EMPIRICAL vs THEORETICAL ANALYSIS:
+With load factor 0.75, linear probing shows clustering.
+Later insertions encounter more collisions.
+Empirical results may vary from theoretical due to
+hash function distribution and clustering effects.
+
+=== Relative File | YourHash (Pair) + RANDOM Probing ===
+Hash      Contents at          Original hash    Final hash    Number of probes
+address   the address          address          address       to store/retrieve
+--------------------------------------------------------------------------------
+   1      Acevedo               85                1             2
+   2      
+   3      Afterwards             3                3             1
+   4      Vinnela               12                4             2
+   5      Necromancer           79                5             3
+   6      Corey                  6                6             1
+   7      Batbold                7                7             1
+   8      Cook                  27                8             3
+   9      Irreversible          28                9             6
+  10      Charles               10               10             1
+  11      Lisa                  25               11             3
+  12      Bhandari              12               12             1
+  13      Joel                  45               13             2
+  14      Clayton               14               14             1
+  15      
+  16      Jordon                16               16             1
+  17      
+  18      
+  19      Zulfiqar              19               19             1
+  20      Yolk                  76               20             3
+  21      Finagle               21               21             1
+  22      
+  23      
+  24      Carmona               24               24             1
+  25      Red                   25               25             1
+  26      Robert                26               26             1
+  27      Cook                  27               27             1
+  28      Judy                  28               28             1
+  29      Fabulous              50               29             2
+  30      
+  31      
+  32      Maiden                76               32             4
+  33      Derek                 33               33             1
+  34      
+  35      James                 25               35             2
+  36      Fabricate             36               36             1
+  37      Eye                   54               37             2
+  38      Clark                 38               38             1
+  39      Qamruddin             39               39             1
+  40      Constriction          84               40             2
+  41      Scott                 41               41             1
+  42      
+  43      Paschal               43               43             1
+  44      Egbe                  44               44             1
+  45      Alcantara             45               45             1
+  46      
+  47      
+  48      
+  49      Buck                  49               49             1
+  50      Michael               68               50             3
+  51      Northwest             26               51             5
+  52      Aguirrie              52               52             1
+  53      Under                 83               53             5
+  54      Jeffrey               54               54             1
+  55      Staple                55               55             1
+  56      
+  57      
+  58      John                  58               58             1
+  59      Kyle                  59               59             1
+  60      Todd                  60               60             1
+  61      Chris                 61               61             1
+  62      
+  63      Akhila                63               63             1
+  64      Gurung                64               64             1
+  65      
+  66      
+  67      Kelly                 67               67             1
+  68      Dustin                72               68             2
+  69      Octavio               69               69             1
+  70      Crouch                70               70             1
+  71      Dugger                43               71             2
+  72      Ellington             72               72             1
+  73      Garza                 73               73             1
+  74      Nienberg              74               74             1
+  75      
+  76      Casper                76               76             1
+  77      
+  78      Honor                 39               78             5
+  79      Matthew               79               79             1
+  80      Jutty                 36               80             3
+  81      Arauza                81               81             1
+  82      Davies                82               82             1
+  83      Syncopate             26               83             3
+  84      Farral                84               84             1
+  85      Salkowski             85               85             1
+  86      Veronica              64               86             4
+  87      Fernando              87               87             1
+  88      Wade                   6               88             3
+  89      
+  90      
+  91      
+  92      Ajose                 92               92             1
+  93      
+  94      Misogamist            94               94             1
+  95      Joseph                95               95             1
+  96      Daniels               96               96             1
+  97      Person                 7               97             3
+  98      Adam                  98               98             1
+  99      
+ 100      Christopher            4              100             3
+
+
+================================================================================
+   COMPREHENSIVE HASH FUNCTION COMPARISON :: Relative File
+                        (75 keys, 100 slots, alpha=0.75)
+================================================================================
+
++---------------------+--------------+----------------+----------------+----------+
+| Hash Function       | Probe Method | First 25 Avg   | Last 25 Avg    | All 75   |
++---------------------+--------------+----------------+----------------+----------+
+| BurrisHash (Orig) | LINEAR       |     3.04      |     44.04      |  21.20  |
+| BurrisHash (Orig) | RANDOM       |     2.88      |     6.08      |  4.37  |
+| YourHash (Pair)  | LINEAR       |     1.16      |     2.40      |  1.71  |
+| YourHash (Pair)  | RANDOM       |     1.20      |     3.16      |  2.05  |
++---------------------+--------------+----------------+----------------+----------+
+
+PERFORMANCE SUMMARY:
+-------------------------------------------------------------------------------
+YourHash improvement over BurrisHash (Linear):   91.9% reduction
+YourHash improvement over BurrisHash (Random):   53.0% reduction
+
+YourHash beats theoretical for both Linear and Random probing!
+-------------------------------------------------------------------------------
+
+\n========================================
+Main Memory :: BurrisHash (Orig) + LINEAR PROBING
+========================================
+
+Inserted 75 keys into hash table
+
+=== HASH FUNCTION DETAILS ===
+Algorithm: BurrisHash - uses char positions 1,5 and pairs 3-4, 5-6
+Formula: HA = (char[1] + char[5])/517 + pair[3:4]/217 + pair[5:6]/256
+Characteristic: Simple arithmetic with fixed divisors, may cluster
+
+=== DISTRIBUTION METRICS ===
+Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
+Total probes for all searches: 1590
+Clustering indicator (last/first avg ratio): 14.49 (>1.0 shows increasing collisions)
+
+=== FIRST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 19
+Average probes: 3.04
+
+=== LAST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 68
+Average probes: 44.04
+
+=== THEORETICAL RESULTS (75 keys) ===
+Load factor (alpha): 0.750
+Theoretical avg probes (Linear): 2.50
+Theoretical avg probes (Random): 0.80
+
+=== ALL 75 KEYS ACTUAL RESULTS ===
+Actual average probes (all 75 keys): 21.20
+
+EMPIRICAL vs THEORETICAL ANALYSIS:
+With load factor 0.75, linear probing shows clustering.
+Later insertions encounter more collisions.
+Empirical results may vary from theoretical due to
+hash function distribution and clustering effects.
+
+=== Main Memory | BurrisHash (Orig) + LINEAR Probing ===
+Hash      Contents at          Original hash    Final hash    Number of probes
+address   the address          address          address       to store/retrieve
+--------------------------------------------------------------------------------
+   1      Bhandari               1                1             1
+   2      Casper                 2                2             1
+   3      Daniels                2                3             2
+   4      Acevedo                2                4             3
+   5      Paschal                5                5             1
+   6      Zulfiqar               6                6             1
+   7      Ajose                  2                7             6
+   8      Clark                  8                8             1
+   9      Davies                 2                9             8
+  10      Dugger                 2               10             9
+  11      Alcantara             11               11             1
+  12      Carmona               12               12             1
+  13      Salkowski             12               13             2
+  14      Ellington             11               14             4
+  15      Aguirrie              15               15             1
+  16      Garza                 98               16            19
+  17      Gurung                11               17             7
+  18      Qamruddin             18               18             1
+  19      Joseph                13               19             7
+  20      Clayton               17               20             4
+  21      Dustin                 6               21            16
+  22      Kelly                 22               22             1
+  23      Arauza                23               23             1
+  24      Corey                 22               24             3
+  25      Robert                15               25            11
+  26      Scott                 17               26            10
+  27      Octavio               19               27             9
+  28      Derek                  8               28            21
+  29      Jeffrey               15               29            15
+  30      Jordon                12               30            19
+  31      Vinnela                2               31            30
+  32      Veronica              11               32            22
+  33      Cook                  33               33             1
+  34      Red                   33               34             2
+  35      Buck                  33               35             3
+  36      Egbe                  33               36             4
+  37      Adam                  33               37             5
+  38      Kyle                  33               38             6
+  39      Judy                  33               39             7
+  40      Lisa                  33               40             8
+  41      Todd                  33               41             9
+  42      Matthew                5               42            38
+  43      Michael               98               43            46
+  44      Akhila                 9               44            36
+  45      John                  33               45            13
+  46      Charles                9               46            38
+  47      James                 16               47            32
+  48      Chris                 16               48            33
+  49      Wade                  33               49            17
+  50      Christopher           16               50            35
+  51      Fernando              98               51            54
+  52      Batbold               12               52            41
+  53      Joel                  33               53            21
+  54      Fabulous               9               54            46
+  55      Misogamist             4               55            52
+  56      Maiden                 2               56            55
+  57      Eye                   33               57            25
+  58      Constriction          17               58            42
+  59      Necromancer           12               59            48
+  60      Syncopate             12               60            49
+  61      Yolk                  33               61            29
+  62      Afterwards            15               62            48
+  63      Person                12               63            52
+  64      Northwest              5               64            60
+  65      Irreversible          19               65            47
+  66      Fabricate              6               66            61
+  67      Honor                 15               67            53
+  68      Staple                 9               68            60
+  69      Under                 15               69            55
+  70      Jutty                 22               70            49
+  71      Finagle                4               71            68
+  72      Cook                  33               72            40
+  73      
+  74      
+  75      
+  76      
+  77      
+  78      
+  79      
+  80      
+  81      
+  82      
+  83      
+  84      
+  85      
+  86      
+  87      
+  88      
+  89      
+  90      
+  91      
+  92      
+  93      
+  94      
+  95      
+  96      
+  97      
+  98      Farral                98               98             1
+  99      Nienberg              99               99             1
+ 100      Crouch               100              100             1
+
+\n========================================
+Main Memory :: BurrisHash (Orig) + RANDOM PROBING
+========================================
+
+Inserted 75 keys into hash table
+
+=== HASH FUNCTION DETAILS ===
+Algorithm: BurrisHash - uses char positions 1,5 and pairs 3-4, 5-6
+Formula: HA = (char[1] + char[5])/517 + pair[3:4]/217 + pair[5:6]/256
+Characteristic: Simple arithmetic with fixed divisors, may cluster
+
+=== DISTRIBUTION METRICS ===
+Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
+Total probes for all searches: 306
+Clustering indicator (last/first avg ratio): 2.07 (>1.0 shows increasing collisions)
+
+=== FIRST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 9
+Average probes: 2.72
+
+=== LAST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 17
+Average probes: 5.64
+
+=== THEORETICAL RESULTS (75 keys) ===
+Load factor (alpha): 0.750
+Theoretical avg probes (Linear): 2.50
+Theoretical avg probes (Random): 0.80
+
+=== ALL 75 KEYS ACTUAL RESULTS ===
+Actual average probes (all 75 keys): 4.08
+
+EMPIRICAL vs THEORETICAL ANALYSIS:
+With load factor 0.75, linear probing shows clustering.
+Later insertions encounter more collisions.
+Empirical results may vary from theoretical due to
+hash function distribution and clustering effects.
+
+=== Main Memory | BurrisHash (Orig) + RANDOM Probing ===
+Hash      Contents at          Original hash    Final hash    Number of probes
+address   the address          address          address       to store/retrieve
+--------------------------------------------------------------------------------
+   1      Bhandari               1                1             1
+   2      Casper                 2                2             1
+   3      Honor                 15                3             3
+   4      Judy                  33                4             2
+   5      Paschal                5                5             1
+   6      Zulfiqar               6                6             1
+   7      
+   8      Clark                  8                8             1
+   9      Akhila                 9                9             1
+  10      Staple                 9               10             2
+  11      Alcantara             11               11             1
+  12      Carmona               12               12             1
+  13      Joseph                13               13             1
+  14      
+  15      Aguirrie              15               15             1
+  16      Dugger                 2               16             2
+  17      Clayton               17               17             1
+  18      Qamruddin             18               18             1
+  19      Octavio               19               19             1
+  20      Matthew                5               20             3
+  21      Eye                   33               21             6
+  22      Kelly                 22               22             1
+  23      Arauza                23               23             1
+  24      Fernando              98               24             2
+  25      
+  26      
+  27      
+  28      Corey                 22               28             2
+  29      
+  30      Irreversible          19               30             3
+  31      
+  32      Michael               98               32             3
+  33      Cook                  33               33             1
+  34      Kyle                  33               34             2
+  35      
+  36      Adam                  33               36             2
+  37      
+  38      Chris                 16               38             3
+  39      Under                 15               39             2
+  40      
+  41      Cook                  33               41             4
+  42      Joel                  33               42             3
+  43      Buck                  33               43             2
+  44      Garza                 98               44             2
+  45      
+  46      Constriction          17               46             4
+  47      Egbe                  33               47             2
+  48      
+  49      Jutty                 22               49             6
+  50      Daniels                2               50             2
+  51      Finagle                4               51             2
+  52      Jordon                12               52             2
+  53      Lisa                  33               53             2
+  54      
+  55      
+  56      Yolk                  33               56             3
+  57      Ajose                  2               57             2
+  58      Person                12               58             2
+  59      
+  60      Robert                15               60             2
+  61      
+  62      Salkowski             12               62             2
+  63      James                 16               63             4
+  64      Ellington             11               64             3
+  65      
+  66      Maiden                 2               66             2
+  67      Gurung                11               67             2
+  68      
+  69      Red                   33               69             2
+  70      Charles                9               70             2
+  71      
+  72      
+  73      Veronica              11               73             4
+  74      Fabulous               9               74             3
+  75      
+  76      Misogamist             4               76             3
+  77      Northwest              5               77             5
+  78      
+  79      Vinnela                2               79             2
+  80      
+  81      Scott                 17               81             2
+  82      Davies                 2               82             2
+  83      Syncopate             12               83             4
+  84      Necromancer           12               84             2
+  85      Christopher           16               85             2
+  86      Dustin                 6               86             2
+  87      Fabricate              6               87             2
+  88      Acevedo                2               88             2
+  89      Todd                  33               89             2
+  90      Wade                  33               90             3
+  91      
+  92      Derek                  8               92             2
+  93      
+  94      Jeffrey               15               94             2
+  95      Batbold               12               95             4
+  96      Afterwards            15               96             5
+  97      John                  33               97             2
+  98      Farral                98               98             1
+  99      Nienberg              99               99             1
+ 100      Crouch               100              100             1
+
+\n========================================
+Main Memory :: YourHash (Pair) + LINEAR PROBING
+========================================
+
+Inserted 75 keys into hash table
+
+=== HASH FUNCTION DETAILS ===
+Algorithm: YourHash - sequential pair accumulation with weighted sum
+Strategy: 8 character pairs (1-2, 3-4, ... 15-16) weighted by primes
+Weights: [131, 113, 101, 89, 79, 71, 61, 53] - descending for balance
+Method: Each pair combined (left*256 + right) and multiplied by weight
+Goal: Better distribution across table, reduce clustering
+
+=== DISTRIBUTION METRICS ===
+Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
+Total probes for all searches: 128
+Clustering indicator (last/first avg ratio): 2.07 (>1.0 shows increasing collisions)
+
+=== FIRST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 3
+Average probes: 1.16
+
+=== LAST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 7
+Average probes: 2.40
+
+=== THEORETICAL RESULTS (75 keys) ===
+Load factor (alpha): 0.750
+Theoretical avg probes (Linear): 2.50
+Theoretical avg probes (Random): 0.80
+
+=== ALL 75 KEYS ACTUAL RESULTS ===
+Actual average probes (all 75 keys): 1.71
+
+EMPIRICAL vs THEORETICAL ANALYSIS:
+With load factor 0.75, linear probing shows clustering.
+Later insertions encounter more collisions.
+Empirical results may vary from theoretical due to
+hash function distribution and clustering effects.
+
+=== Main Memory | YourHash (Pair) + LINEAR Probing ===
+Hash      Contents at          Original hash    Final hash    Number of probes
+address   the address          address          address       to store/retrieve
+--------------------------------------------------------------------------------
+   1      
+   2      
+   3      Afterwards             3                3             1
+   4      Christopher            4                4             1
+   5      
+   6      Corey                  6                6             1
+   7      Wade                   6                7             2
+   8      Batbold                7                8             2
+   9      Person                 7                9             3
+  10      Charles               10               10             1
+  11      
+  12      Bhandari              12               12             1
+  13      Vinnela               12               13             2
+  14      Clayton               14               14             1
+  15      
+  16      Jordon                16               16             1
+  17      
+  18      
+  19      Zulfiqar              19               19             1
+  20      
+  21      Finagle               21               21             1
+  22      
+  23      
+  24      Carmona               24               24             1
+  25      Red                   25               25             1
+  26      Robert                26               26             1
+  27      Cook                  27               27             1
+  28      Judy                  28               28             1
+  29      Lisa                  25               29             5
+  30      James                 25               30             6
+  31      Syncopate             26               31             6
+  32      Northwest             26               32             7
+  33      Derek                 33               33             1
+  34      Irreversible          28               34             7
+  35      Cook                  27               35             9
+  36      Fabricate             36               36             1
+  37      Jutty                 36               37             2
+  38      Clark                 38               38             1
+  39      Qamruddin             39               39             1
+  40      Honor                 39               40             2
+  41      Scott                 41               41             1
+  42      
+  43      Paschal               43               43             1
+  44      Dugger                43               44             2
+  45      Alcantara             45               45             1
+  46      Egbe                  44               46             3
+  47      Joel                  45               47             3
+  48      
+  49      Buck                  49               49             1
+  50      Fabulous              50               50             1
+  51      
+  52      Aguirrie              52               52             1
+  53      
+  54      Jeffrey               54               54             1
+  55      Eye                   54               55             2
+  56      Staple                55               56             2
+  57      
+  58      John                  58               58             1
+  59      Kyle                  59               59             1
+  60      Todd                  60               60             1
+  61      Chris                 61               61             1
+  62      
+  63      Akhila                63               63             1
+  64      Gurung                64               64             1
+  65      Veronica              64               65             2
+  66      
+  67      Kelly                 67               67             1
+  68      Michael               68               68             1
+  69      Octavio               69               69             1
+  70      Crouch                70               70             1
+  71      
+  72      Ellington             72               72             1
+  73      Garza                 73               73             1
+  74      Nienberg              74               74             1
+  75      Dustin                72               75             4
+  76      Casper                76               76             1
+  77      Maiden                76               77             2
+  78      Yolk                  76               78             3
+  79      Matthew               79               79             1
+  80      Necromancer           79               80             2
+  81      Arauza                81               81             1
+  82      Davies                82               82             1
+  83      Under                 83               83             1
+  84      Farral                84               84             1
+  85      Salkowski             85               85             1
+  86      Acevedo               85               86             2
+  87      Fernando              87               87             1
+  88      Constriction          84               88             5
+  89      
+  90      
+  91      
+  92      Ajose                 92               92             1
+  93      
+  94      Misogamist            94               94             1
+  95      Joseph                95               95             1
+  96      Daniels               96               96             1
+  97      
+  98      Adam                  98               98             1
+  99      
+ 100      
+
+\n========================================
+Main Memory :: YourHash (Pair) + RANDOM PROBING
+========================================
+
+Inserted 75 keys into hash table
+
+=== HASH FUNCTION DETAILS ===
+Algorithm: YourHash - sequential pair accumulation with weighted sum
+Strategy: 8 character pairs (1-2, 3-4, ... 15-16) weighted by primes
+Weights: [131, 113, 101, 89, 79, 71, 61, 53] - descending for balance
+Method: Each pair combined (left*256 + right) and multiplied by weight
+Goal: Better distribution across table, reduce clustering
+
+=== DISTRIBUTION METRICS ===
+Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
+Total probes for all searches: 176
+Clustering indicator (last/first avg ratio): 3.07 (>1.0 shows increasing collisions)
+
+=== FIRST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 3
+Average probes: 1.12
+
+=== LAST 25 KEYS ===
+Minimum probes: 1
+Maximum probes: 11
+Average probes: 3.44
+
+=== THEORETICAL RESULTS (75 keys) ===
+Load factor (alpha): 0.750
+Theoretical avg probes (Linear): 2.50
+Theoretical avg probes (Random): 0.80
+
+=== ALL 75 KEYS ACTUAL RESULTS ===
+Actual average probes (all 75 keys): 2.35
+
+EMPIRICAL vs THEORETICAL ANALYSIS:
+With load factor 0.75, linear probing shows clustering.
+Later insertions encounter more collisions.
+Empirical results may vary from theoretical due to
+hash function distribution and clustering effects.
+
+=== Main Memory | YourHash (Pair) + RANDOM Probing ===
+Hash      Contents at          Original hash    Final hash    Number of probes
+address   the address          address          address       to store/retrieve
+--------------------------------------------------------------------------------
+   1      Finagle               21                1             6
+   2      Irreversible          28                2             2
+   3      Afterwards             3                3             1
+   4      Christopher            4                4             1
+   5      
+   6      Corey                  6                6             1
+   7      Batbold                7                7             1
+   8      
+   9      
+  10      Charles               10               10             1
+  11      
+  12      Bhandari              12               12             1
+  13      Under                 83               13             7
+  14      Clayton               14               14             1
+  15      
+  16      Jordon                16               16             1
+  17      Honor                 39               17             2
+  18      Acevedo               85               18             2
+  19      Zulfiqar              19               19             1
+  20      Syncopate             26               20             2
+  21      Yolk                  76               21             2
+  22      
+  23      Maiden                76               23             6
+  24      Carmona               24               24             1
+  25      Red                   25               25             1
+  26      Robert                26               26             1
+  27      Cook                  27               27             1
+  28      Judy                  28               28             1
+  29      
+  30      
+  31      Wade                   6               31             2
+  32      
+  33      Dugger                43               33             2
+  34      
+  35      
+  36      Fabricate             36               36             1
+  37      Jutty                 36               37             3
+  38      Clark                 38               38             1
+  39      Qamruddin             39               39             1
+  40      
+  41      Scott                 41               41             1
+  42      Octavio               69               42             3
+  43      Paschal               43               43             1
+  44      Egbe                  44               44             1
+  45      Alcantara             45               45             1
+  46      
+  47      James                 25               47             3
+  48      Lisa                  25               48             4
+  49      Buck                  49               49             1
+  50      Fabulous              50               50             1
+  51      
+  52      Aguirrie              52               52             1
+  53      
+  54      Jeffrey               54               54             1
+  55      Staple                55               55             1
+  56      
+  57      
+  58      John                  58               58             1
+  59      Kyle                  59               59             1
+  60      Todd                  60               60             1
+  61      Chris                 61               61             1
+  62      Vinnela               12               62             2
+  63      Akhila                63               63             1
+  64      Gurung                64               64             1
+  65      
+  66      Veronica              64               66             3
+  67      Kelly                 67               67             1
+  68      Michael               68               68             1
+  69      Dustin                72               69             3
+  70      Crouch                70               70             1
+  71      Eye                   54               71             3
+  72      Ellington             72               72             1
+  73      Garza                 73               73             1
+  74      Nienberg              74               74             1
+  75      
+  76      Casper                76               76             1
+  77      Cook                  27               77            14
+  78      
+  79      Matthew               79               79             1
+  80      Joel                  45               80             5
+  81      Arauza                81               81             1
+  82      Davies                82               82             1
+  83      Constriction          84               83             2
+  84      Farral                84               84             1
+  85      Salkowski             85               85             1
+  86      Person                 7               86             3
+  87      Fernando              87               87             1
+  88      Derek                 33               88             2
+  89      Northwest             26               89             4
+  90      
+  91      Necromancer           79               91             2
+  92      Ajose                 92               92             1
+  93      
+  94      Misogamist            94               94             1
+  95      Joseph                95               95             1
+  96      Daniels               96               96             1
+  97      
+  98      Adam                  98               98             1
+  99      
+ 100      
+
+
+================================================================================
+   COMPREHENSIVE HASH FUNCTION COMPARISON :: Main Memory
+                        (75 keys, 100 slots, alpha=0.75)
+================================================================================
+
++---------------------+--------------+----------------+----------------+----------+
+| Hash Function       | Probe Method | First 25 Avg   | Last 25 Avg    | All 75   |
++---------------------+--------------+----------------+----------------+----------+
+| BurrisHash (Orig) | LINEAR       |     3.04      |     44.04      |  21.20  |
+| BurrisHash (Orig) | RANDOM       |     2.72      |     5.64      |  4.08  |
+| YourHash (Pair)  | LINEAR       |     1.16      |     2.40      |  1.71  |
+| YourHash (Pair)  | RANDOM       |     1.12      |     3.44      |  2.35  |
++---------------------+--------------+----------------+----------------+----------+
+
+PERFORMANCE SUMMARY:
+-------------------------------------------------------------------------------
+YourHash improvement over BurrisHash (Linear):   91.9% reduction
+YourHash improvement over BurrisHash (Random):   42.5% reduction
+
+YourHash beats theoretical for both Linear and Random probing!
+-------------------------------------------------------------------------------
+
+
+================ RELATIVE FILE vs MAIN MEMORY SUMMARY ================
+- BurrisHash (Orig) / LINEAR: Relative=21.20  |  Memory=21.20  |  Difference=0.00
+- BurrisHash (Orig) / RANDOM: Relative=4.37  |  Memory=4.08  |  Difference=0.29
+- YourHash (Pair) / LINEAR: Relative=1.71  |  Memory=1.71  |  Difference=0.00
+- YourHash (Pair) / RANDOM: Relative=2.05  |  Memory=2.35  |  Difference=-0.29
+

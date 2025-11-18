@@ -60,7 +60,7 @@ package body Test_Runner is
       Hash_Stats.Print_Line("=== HASH FUNCTION DETAILS ===");
       if Selected_Hash_Function = Original_Hash then
          Hash_Stats.Print_Line("Algorithm: BurrisHash - uses char positions 1,5 and pairs 3-4, 5-6");
-         Hash_Stats.Print_Line("Formula: HA = (char[1] + char[5])/517 + pair[3:4]/217 + pair[5:6]/256");
+         Hash_Stats.Print_Line("Formula: HA = (char[1] + char[5])/517 + pair[3:4]/2**17 + pair[5:6]/256");
          Hash_Stats.Print_Line("Characteristic: Simple arithmetic with fixed divisors, may cluster");
       else
          Hash_Stats.Print_Line("Algorithm: YourHash - sequential pair accumulation with weighted sum");
