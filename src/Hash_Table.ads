@@ -18,7 +18,7 @@ package Hash_Table is
    procedure Create_Table;
    procedure Insert_Key(Key_Value : String);
    function Search_Key(Key_Value :String) return Integer;
-   procedure Dump_Table(header : String);
+   procedure Display_HashTable(header : String);
    procedure Close_Table;
    
 end Hash_Table;

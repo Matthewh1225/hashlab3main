@@ -132,7 +132,7 @@ package body Test_Runner is
       Hash_Stats.Print_Line("hash function distribution and clustering effects.");
       Hash_Stats.Print_Blank_Line;
 
-      Dump_Table(Storage_Label_Text & " | " & Hash_Label_Text & " + " & Probe_Method_Label & " Probing");
+      Display_HashTable(Storage_Label_Text & " | " & Hash_Label_Text & " + " & Probe_Method_Label & " Probing");
       Close_Table;
    end Run_Hash_Scenario;
 

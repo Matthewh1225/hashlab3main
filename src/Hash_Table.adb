@@ -11,24 +11,21 @@ package body Hash_Table is
    subtype Offset_Range is Integer range 1 .. Table_Size;
 
    package Relative_File_IO is new Ada.Direct_IO(Hash_Record);
-   Hash_File    : Relative_File_IO.File_Type;
+   Hash_File  : Relative_File_IO.File_Type;
    File_Is_Open : Boolean := False;
 
    package Probe_Offsets is new Ada.Numerics.Discrete_Random(Offset_Range);
    Probe_Generator : Probe_Offsets.Generator;
 
-   Empty_Key    : constant String(1 .. 16):= (others => ' ');
-   Empty_Record : constant Hash_Record :=
-     (Stored_Key => Empty_Key,
-      Initial_Hash_Index=> 0,
-      Probe_Count => 0);
+   Empty_Key :constant String(1 .. 16):= (others => ' ');
+   Empty_Record:constant Hash_Record := (Stored_Key => Empty_Key,Initial_Hash_Index=> 0,Probe_Count => 0);
 
-   Active_Probe_Method  : Probe_Method := Linear;
-   Active_Hash_Function : Hash_Function_Type := Original_Hash;
-   Active_Storage_Mode  : Storage_Mode := Relative_File;
+   Active_Probe_Method : Probe_Method := Linear;
+   Active_Hash_Function: Hash_Function_Type := Original_Hash;
+   Active_Storage_Mode: Storage_Mode := Relative_File;
 
    Memory_Hash_Table : array (Slot_Index) of Hash_Record := (others => Empty_Record);
-
+   --file for relative storage moehto
    procedure Initialize_Relative_File is
    begin
       Relative_File_IO.Create(Hash_File, Relative_File_IO.Inout_File, "hash_table.dat");
@@ -48,7 +45,7 @@ package body Hash_Table is
          return Slot_Index(((Current_Slot + Probe_Offsets.Random(Probe_Generator) - 1) mod Table_Size) + 1);
       end if;
    end Next_Slot;
-
+   --uses mine or burris hash functions to get initial slot
    function Hash_Function(Key_Value : String) return Slot_Index is
       Base_Value : Integer;
    begin
@@ -60,7 +57,7 @@ package body Hash_Table is
       return Slot_Index((abs(Base_Value) mod Table_Size) + 1);
    end Hash_Function;
 
-   --read slot data from storage (file or memory)
+   --read slot data from a storage type (file or memory)
    procedure Read_Slot(Slot : Slot_Index; Data : out Hash_Record) is
    begin
       if Active_Storage_Mode = Relative_File then
@@ -134,7 +131,7 @@ package body Hash_Table is
    --search for key and return number of probes needed
    function Search_Key(Key_Value : String) return Integer is
       Current_Slot : Slot_Index:= Hash_Function(Key_Value);
-      Slot_Data    : Hash_Record;
+      Slot_Data  : Hash_Record;
    begin
       for Probes in 1 .. Table_Size loop
          Read_Slot(Current_Slot, Slot_Data);
@@ -150,7 +147,7 @@ package body Hash_Table is
       return Table_Size;
    end Search_Key;
 
-   procedure Dump_Table(header : String) is
+   procedure Display_HashTable(header : String) is
       Slot_Data : Hash_Record;
    begin
       Put_Line("=== " & header & " ===");
@@ -177,7 +174,7 @@ package body Hash_Table is
          New_Line;
       end loop;
       New_Line;
-   end Dump_Table;
+   end Display_HashTable;
 
    procedure Close_Table is
    begin
