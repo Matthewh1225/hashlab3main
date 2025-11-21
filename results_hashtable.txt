@@ -11,8 +11,8 @@ Characteristic: Simple arithmetic with fixed divisors, may cluster
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 459
-Clustering indicator (last/first avg ratio): 1.79 (>1.0 shows increasing collisions)
+Total probes for all searches: 380
+Clustering indicator (last/first avg ratio): 1.21 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
@@ -21,8 +21,8 @@ Average probes: 4.48
 
 === LAST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 19
-Average probes: 8.04
+Maximum probes: 8
+Average probes: 5.40
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -30,7 +30,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 6.12
+Actual average probes (all 75 keys): 5.07
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -51,18 +51,18 @@ Characteristic: Simple arithmetic with fixed divisors, may cluster
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 159
-Clustering indicator (last/first avg ratio): 1.24 (>1.0 shows increasing collisions)
+Total probes for all searches: 169
+Clustering indicator (last/first avg ratio): 1.36 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 5
-Average probes: 1.84
+Maximum probes: 4
+Average probes: 1.76
 
 === LAST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 8
-Average probes: 2.28
+Maximum probes: 6
+Average probes: 2.40
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -70,7 +70,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 2.12
+Actual average probes (all 75 keys): 2.25
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -93,18 +93,18 @@ Goal: Better distribution across table, reduce clustering
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 193
-Clustering indicator (last/first avg ratio): 1.05 (>1.0 shows increasing collisions)
+Total probes for all searches: 87
+Clustering indicator (last/first avg ratio): 1.12 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 4
-Average probes: 2.44
+Maximum probes: 2
+Average probes: 1.04
 
 === LAST 25 KEYS ===
 Minimum probes: 1
 Maximum probes: 4
-Average probes: 2.56
+Average probes: 1.16
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -112,7 +112,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 2.57
+Actual average probes (all 75 keys): 1.16
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -135,18 +135,18 @@ Goal: Better distribution across table, reduce clustering
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 141
-Clustering indicator (last/first avg ratio): 1.07 (>1.0 shows increasing collisions)
+Total probes for all searches: 85
+Clustering indicator (last/first avg ratio): 1.15 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 5
-Average probes: 1.76
+Maximum probes: 2
+Average probes: 1.04
 
 === LAST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 5
-Average probes: 1.88
+Maximum probes: 3
+Average probes: 1.20
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -154,7 +154,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 1.88
+Actual average probes (all 75 keys): 1.13
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -171,16 +171,16 @@ hash function distribution and clustering effects.
 +---------------------+--------------+----------------+----------------+----------+
 | Hash Function       | Probe Method | First 25 Avg   | Last 25 Avg    | All 75   |
 +---------------------+--------------+----------------+----------------+----------+
-| BurrisHash (Orig) | LINEAR       |     4.48      |     8.04      |  6.12  |
-| BurrisHash (Orig) | RANDOM       |     1.84      |     2.28      |  2.12  |
-| YourHash (Pair)  | LINEAR       |     2.44      |     2.56      |  2.57  |
-| YourHash (Pair)  | RANDOM       |     1.76      |     1.88      |  1.88  |
+| BurrisHash (Orig) | LINEAR       |     4.48      |     5.40      |  5.07  |
+| BurrisHash (Orig) | RANDOM       |     1.76      |     2.40      |  2.25  |
+| YourHash (Pair)  | LINEAR       |     1.04      |     1.16      |  1.16  |
+| YourHash (Pair)  | RANDOM       |     1.04      |     1.20      |  1.13  |
 +---------------------+--------------+----------------+----------------+----------+
 
 PERFORMANCE SUMMARY:
 -------------------------------------------------------------------------------
-YourHash improvement over BurrisHash (Linear):   58.0% reduction
-YourHash improvement over BurrisHash (Random):   11.3% reduction
+YourHash improvement over BurrisHash (Linear):   77.1% reduction
+YourHash improvement over BurrisHash (Random):   49.7% reduction
 
 YourHash beats theoretical for both Linear and Random probing!
 -------------------------------------------------------------------------------
@@ -198,8 +198,8 @@ Characteristic: Simple arithmetic with fixed divisors, may cluster
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 459
-Clustering indicator (last/first avg ratio): 1.79 (>1.0 shows increasing collisions)
+Total probes for all searches: 380
+Clustering indicator (last/first avg ratio): 1.21 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
@@ -208,8 +208,8 @@ Average probes: 4.48
 
 === LAST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 19
-Average probes: 8.04
+Maximum probes: 8
+Average probes: 5.40
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -217,7 +217,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 6.12
+Actual average probes (all 75 keys): 5.07
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -238,18 +238,18 @@ Characteristic: Simple arithmetic with fixed divisors, may cluster
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 179
-Clustering indicator (last/first avg ratio): 0.95 (>1.0 shows increasing collisions)
+Total probes for all searches: 167
+Clustering indicator (last/first avg ratio): 0.96 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 7
-Average probes: 2.44
+Maximum probes: 8
+Average probes: 2.12
 
 === LAST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 4
-Average probes: 2.32
+Maximum probes: 3
+Average probes: 2.04
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -257,7 +257,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 2.39
+Actual average probes (all 75 keys): 2.23
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -280,18 +280,18 @@ Goal: Better distribution across table, reduce clustering
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 193
-Clustering indicator (last/first avg ratio): 1.05 (>1.0 shows increasing collisions)
+Total probes for all searches: 87
+Clustering indicator (last/first avg ratio): 1.12 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 4
-Average probes: 2.44
+Maximum probes: 2
+Average probes: 1.04
 
 === LAST 25 KEYS ===
 Minimum probes: 1
 Maximum probes: 4
-Average probes: 2.56
+Average probes: 1.16
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -299,7 +299,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 2.57
+Actual average probes (all 75 keys): 1.16
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -322,18 +322,18 @@ Goal: Better distribution across table, reduce clustering
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 131
-Clustering indicator (last/first avg ratio): 1.15 (>1.0 shows increasing collisions)
+Total probes for all searches: 85
+Clustering indicator (last/first avg ratio): 1.08 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 4
-Average probes: 1.56
+Maximum probes: 2
+Average probes: 1.04
 
 === LAST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 4
-Average probes: 1.80
+Maximum probes: 3
+Average probes: 1.12
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -341,7 +341,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 1.75
+Actual average probes (all 75 keys): 1.13
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -358,24 +358,24 @@ hash function distribution and clustering effects.
 +---------------------+--------------+----------------+----------------+----------+
 | Hash Function       | Probe Method | First 25 Avg   | Last 25 Avg    | All 75   |
 +---------------------+--------------+----------------+----------------+----------+
-| BurrisHash (Orig) | LINEAR       |     4.48      |     8.04      |  6.12  |
-| BurrisHash (Orig) | RANDOM       |     2.44      |     2.32      |  2.39  |
-| YourHash (Pair)  | LINEAR       |     2.44      |     2.56      |  2.57  |
-| YourHash (Pair)  | RANDOM       |     1.56      |     1.80      |  1.75  |
+| BurrisHash (Orig) | LINEAR       |     4.48      |     5.40      |  5.07  |
+| BurrisHash (Orig) | RANDOM       |     2.12      |     2.04      |  2.23  |
+| YourHash (Pair)  | LINEAR       |     1.04      |     1.16      |  1.16  |
+| YourHash (Pair)  | RANDOM       |     1.04      |     1.12      |  1.13  |
 +---------------------+--------------+----------------+----------------+----------+
 
 PERFORMANCE SUMMARY:
 -------------------------------------------------------------------------------
-YourHash improvement over BurrisHash (Linear):   58.0% reduction
-YourHash improvement over BurrisHash (Random):   26.8% reduction
+YourHash improvement over BurrisHash (Linear):   77.1% reduction
+YourHash improvement over BurrisHash (Random):   49.1% reduction
 
 YourHash beats theoretical for both Linear and Random probing!
 -------------------------------------------------------------------------------
 
 
 ================ RELATIVE FILE vs MAIN MEMORY SUMMARY ================
-- BurrisHash (Orig) / LINEAR: Relative=6.12  |  Memory=6.12  |  Difference=0.00
-- BurrisHash (Orig) / RANDOM: Relative=2.12  |  Memory=2.39  |  Difference=-0.27
-- YourHash (Pair) / LINEAR: Relative=2.57  |  Memory=2.57  |  Difference=0.00
-- YourHash (Pair) / RANDOM: Relative=1.88  |  Memory=1.75  |  Difference=0.13
+- BurrisHash (Orig) / LINEAR: Relative=5.07  |  Memory=5.07  |  Difference=0.00
+- BurrisHash (Orig) / RANDOM: Relative=2.25  |  Memory=2.23  |  Difference=0.03
+- YourHash (Pair) / LINEAR: Relative=1.16  |  Memory=1.16  |  Difference=0.00
+- YourHash (Pair) / RANDOM: Relative=1.13  |  Memory=1.13  |  Difference=0.00
 
