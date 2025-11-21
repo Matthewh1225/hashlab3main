@@ -1,9 +1,22 @@
 with Interfaces; use Interfaces;
 package body Hash_Type is
---convert/sum pair of chars to long long int
+--convert/sum pair of chars to long long int by concatenating ASCII values
    function Pair_Value(Key : String; Left_Index :Integer) return Long_Long_Integer is
+      Left_ASCII  : Long_Long_Integer := Long_Long_Integer(Character'Pos(Key(Left_Index)));
+      Right_ASCII : Long_Long_Integer := Long_Long_Integer(Character'Pos(Key(Left_Index + 1)));
+      Multiplier  : Long_Long_Integer;
    begin
-      return Long_Long_Integer(Character'Pos(Key(Left_Index))) * 256+ Long_Long_Integer(Character'Pos(Key(Left_Index + 1)));
+      -- Determine how many digits the right ASCII value has
+      if Right_ASCII < 10 then
+         Multiplier := 10;
+      elsif Right_ASCII < 100 then
+         Multiplier := 100;
+      else
+         Multiplier := 1000;
+      end if;
+      
+      -- Concatenate: left * multiplier + right (e.g., 97 * 100 + 98 = 9798)
+      return Left_ASCII * Multiplier + Right_ASCII;
    end Pair_Value;
 
    function BurrisHash (Key :String) return Integer is
