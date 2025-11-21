@@ -5,7 +5,7 @@ project Hashlab3main is
    for Object_Dir use "obj/" & Hashlab3main_Config.Build_Profile;
    for Create_Missing_Dirs use "True";
    for Exec_Dir use "bin";
-   for Main use ("hashlab3main.adb");
+   for Main use ("hashlab3main.adb", "Memory_Dump_Generator.adb");
 
    package Compiler is
       for Default_Switches ("Ada") use Hashlab3main_Config.Ada_Compiler_Switches;
