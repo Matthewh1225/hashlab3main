@@ -54,7 +54,7 @@ package body Hash_Table is
          when Pair_Hash => Hash_Type.Pair_Hash(Key_Value, Base_Value);
       end case;
 
-      return Slot_Index((abs(Base_Value) mod Table_Size) + 1);
+      return Slot_Index(Base_Value);
    end Hash_Function;
 
    --read slot data from a storage type (file or memory)
@@ -150,7 +150,7 @@ package body Hash_Table is
    procedure Display_HashTable(header : String) is
       Slot_Data : Hash_Record;
    begin
-      Put_Line("=== " & header & " ===");
+      Put_Line (" & header & ");
       Put_Line("Hash      Contents at          Original hash    Final hash    Number of probes");
       Put_Line("address   the address          address          address       to store/retrieve");
       Put_Line("--------------------------------------------------------------------------------");
@@ -163,11 +163,11 @@ package body Hash_Table is
 
          if Slot_Data.Stored_Key /= Empty_Key then
             Put(Slot_Data.Stored_Key);
-            Put("    ");
+            Put(" ");
             Int_IO.Put(Slot_Data.Initial_Hash_Index, Width => 4);
-            Put("             ");
+            Put("        ");
             Int_IO.Put(Slot_Number, Width => 4);
-            Put("          ");
+            Put("    ");
             Int_IO.Put(Slot_Data.Probe_Count, Width => 4);
          end if;
 

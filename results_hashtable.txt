@@ -51,18 +51,18 @@ Characteristic: Simple arithmetic with fixed divisors, may cluster
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 169
-Clustering indicator (last/first avg ratio): 1.36 (>1.0 shows increasing collisions)
+Total probes for all searches: 178
+Clustering indicator (last/first avg ratio): 1.21 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 4
-Average probes: 1.76
+Maximum probes: 7
+Average probes: 2.08
 
 === LAST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 6
-Average probes: 2.40
+Maximum probes: 5
+Average probes: 2.52
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -70,7 +70,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 2.25
+Actual average probes (all 75 keys): 2.37
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -87,24 +87,24 @@ Inserted 75 keys into hash table
 === HASH FUNCTION DETAILS ===
 Algorithm: YourHash - sequential pair accumulation with weighted sum
 Strategy: 8 character pairs (1-2, 3-4, ... 15-16) weighted by primes
-Weights: [131, 113, 101, 89, 79, 71, 61, 53] - descending for balance
-Method: Each pair combined (left*256 + right) and multiplied by weight
+Weights: [191, 167, 131, 83, 59, 31, 17, 7] - descending for balance
+Method: ASCII values concatenated as decimals (e.g., 'ab' -> 9798) then weighted
 Goal: Better distribution across table, reduce clustering
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 87
-Clustering indicator (last/first avg ratio): 1.12 (>1.0 shows increasing collisions)
+Total probes for all searches: 82
+Clustering indicator (last/first avg ratio): 1.20 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 2
-Average probes: 1.04
+Maximum probes: 1
+Average probes: 1.00
 
 === LAST 25 KEYS ===
 Minimum probes: 1
 Maximum probes: 4
-Average probes: 1.16
+Average probes: 1.20
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -112,7 +112,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 1.16
+Actual average probes (all 75 keys): 1.09
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -129,24 +129,24 @@ Inserted 75 keys into hash table
 === HASH FUNCTION DETAILS ===
 Algorithm: YourHash - sequential pair accumulation with weighted sum
 Strategy: 8 character pairs (1-2, 3-4, ... 15-16) weighted by primes
-Weights: [131, 113, 101, 89, 79, 71, 61, 53] - descending for balance
-Method: Each pair combined (left*256 + right) and multiplied by weight
+Weights: [191, 167, 131, 83, 59, 31, 17, 7] - descending for balance
+Method: ASCII values concatenated as decimals (e.g., 'ab' -> 9798) then weighted
 Goal: Better distribution across table, reduce clustering
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 85
-Clustering indicator (last/first avg ratio): 1.15 (>1.0 shows increasing collisions)
+Total probes for all searches: 82
+Clustering indicator (last/first avg ratio): 1.16 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 2
-Average probes: 1.04
+Maximum probes: 1
+Average probes: 1.00
 
 === LAST 25 KEYS ===
 Minimum probes: 1
 Maximum probes: 3
-Average probes: 1.20
+Average probes: 1.16
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -154,7 +154,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 1.13
+Actual average probes (all 75 keys): 1.09
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -172,15 +172,15 @@ hash function distribution and clustering effects.
 | Hash Function       | Probe Method | First 25 Avg   | Last 25 Avg    | All 75   |
 +---------------------+--------------+----------------+----------------+----------+
 | BurrisHash (Orig) | LINEAR       |     4.48      |     5.40      |  5.07  |
-| BurrisHash (Orig) | RANDOM       |     1.76      |     2.40      |  2.25  |
-| YourHash (Pair)  | LINEAR       |     1.04      |     1.16      |  1.16  |
-| YourHash (Pair)  | RANDOM       |     1.04      |     1.20      |  1.13  |
+| BurrisHash (Orig) | RANDOM       |     2.08      |     2.52      |  2.37  |
+| YourHash (Pair)  | LINEAR       |     1.00      |     1.20      |  1.09  |
+| YourHash (Pair)  | RANDOM       |     1.00      |     1.16      |  1.09  |
 +---------------------+--------------+----------------+----------------+----------+
 
 PERFORMANCE SUMMARY:
 -------------------------------------------------------------------------------
-YourHash improvement over BurrisHash (Linear):   77.1% reduction
-YourHash improvement over BurrisHash (Random):   49.7% reduction
+YourHash improvement over BurrisHash (Linear):   78.4% reduction
+YourHash improvement over BurrisHash (Random):   53.9% reduction
 
 YourHash beats theoretical for both Linear and Random probing!
 -------------------------------------------------------------------------------
@@ -238,18 +238,18 @@ Characteristic: Simple arithmetic with fixed divisors, may cluster
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 167
-Clustering indicator (last/first avg ratio): 0.96 (>1.0 shows increasing collisions)
+Total probes for all searches: 166
+Clustering indicator (last/first avg ratio): 1.19 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 8
-Average probes: 2.12
+Maximum probes: 4
+Average probes: 1.88
 
 === LAST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 3
-Average probes: 2.04
+Maximum probes: 9
+Average probes: 2.24
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -257,7 +257,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 2.23
+Actual average probes (all 75 keys): 2.21
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -274,24 +274,24 @@ Inserted 75 keys into hash table
 === HASH FUNCTION DETAILS ===
 Algorithm: YourHash - sequential pair accumulation with weighted sum
 Strategy: 8 character pairs (1-2, 3-4, ... 15-16) weighted by primes
-Weights: [131, 113, 101, 89, 79, 71, 61, 53] - descending for balance
-Method: Each pair combined (left*256 + right) and multiplied by weight
+Weights: [191, 167, 131, 83, 59, 31, 17, 7] - descending for balance
+Method: ASCII values concatenated as decimals (e.g., 'ab' -> 9798) then weighted
 Goal: Better distribution across table, reduce clustering
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 87
-Clustering indicator (last/first avg ratio): 1.12 (>1.0 shows increasing collisions)
+Total probes for all searches: 82
+Clustering indicator (last/first avg ratio): 1.20 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 2
-Average probes: 1.04
+Maximum probes: 1
+Average probes: 1.00
 
 === LAST 25 KEYS ===
 Minimum probes: 1
 Maximum probes: 4
-Average probes: 1.16
+Average probes: 1.20
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -299,7 +299,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 1.16
+Actual average probes (all 75 keys): 1.09
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -316,24 +316,24 @@ Inserted 75 keys into hash table
 === HASH FUNCTION DETAILS ===
 Algorithm: YourHash - sequential pair accumulation with weighted sum
 Strategy: 8 character pairs (1-2, 3-4, ... 15-16) weighted by primes
-Weights: [131, 113, 101, 89, 79, 71, 61, 53] - descending for balance
-Method: Each pair combined (left*256 + right) and multiplied by weight
+Weights: [191, 167, 131, 83, 59, 31, 17, 7] - descending for balance
+Method: ASCII values concatenated as decimals (e.g., 'ab' -> 9798) then weighted
 Goal: Better distribution across table, reduce clustering
 
 === DISTRIBUTION METRICS ===
 Keys inserted: 75  |  Table size: 100  |  Load factor: 0.75
-Total probes for all searches: 85
-Clustering indicator (last/first avg ratio): 1.08 (>1.0 shows increasing collisions)
+Total probes for all searches: 89
+Clustering indicator (last/first avg ratio): 1.40 (>1.0 shows increasing collisions)
 
 === FIRST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 2
-Average probes: 1.04
+Maximum probes: 1
+Average probes: 1.00
 
 === LAST 25 KEYS ===
 Minimum probes: 1
-Maximum probes: 3
-Average probes: 1.12
+Maximum probes: 5
+Average probes: 1.40
 
 === THEORETICAL RESULTS (75 keys) ===
 Load factor (alpha): 0.750
@@ -341,7 +341,7 @@ Theoretical avg probes (Linear): 2.50
 Theoretical avg probes (Random): 0.80
 
 === ALL 75 KEYS ACTUAL RESULTS ===
-Actual average probes (all 75 keys): 1.13
+Actual average probes (all 75 keys): 1.19
 
 EMPIRICAL vs THEORETICAL ANALYSIS:
 With load factor 0.75, linear probing shows clustering.
@@ -359,15 +359,15 @@ hash function distribution and clustering effects.
 | Hash Function       | Probe Method | First 25 Avg   | Last 25 Avg    | All 75   |
 +---------------------+--------------+----------------+----------------+----------+
 | BurrisHash (Orig) | LINEAR       |     4.48      |     5.40      |  5.07  |
-| BurrisHash (Orig) | RANDOM       |     2.12      |     2.04      |  2.23  |
-| YourHash (Pair)  | LINEAR       |     1.04      |     1.16      |  1.16  |
-| YourHash (Pair)  | RANDOM       |     1.04      |     1.12      |  1.13  |
+| BurrisHash (Orig) | RANDOM       |     1.88      |     2.24      |  2.21  |
+| YourHash (Pair)  | LINEAR       |     1.00      |     1.20      |  1.09  |
+| YourHash (Pair)  | RANDOM       |     1.00      |     1.40      |  1.19  |
 +---------------------+--------------+----------------+----------------+----------+
 
 PERFORMANCE SUMMARY:
 -------------------------------------------------------------------------------
-YourHash improvement over BurrisHash (Linear):   77.1% reduction
-YourHash improvement over BurrisHash (Random):   49.1% reduction
+YourHash improvement over BurrisHash (Linear):   78.4% reduction
+YourHash improvement over BurrisHash (Random):   46.4% reduction
 
 YourHash beats theoretical for both Linear and Random probing!
 -------------------------------------------------------------------------------
@@ -375,7 +375,7 @@ YourHash beats theoretical for both Linear and Random probing!
 
 ================ RELATIVE FILE vs MAIN MEMORY SUMMARY ================
 - BurrisHash (Orig) / LINEAR: Relative=5.07  |  Memory=5.07  |  Difference=0.00
-- BurrisHash (Orig) / RANDOM: Relative=2.25  |  Memory=2.23  |  Difference=0.03
-- YourHash (Pair) / LINEAR: Relative=1.16  |  Memory=1.16  |  Difference=0.00
-- YourHash (Pair) / RANDOM: Relative=1.13  |  Memory=1.13  |  Difference=0.00
+- BurrisHash (Orig) / RANDOM: Relative=2.37  |  Memory=2.21  |  Difference=0.16
+- YourHash (Pair) / LINEAR: Relative=1.09  |  Memory=1.09  |  Difference=0.00
+- YourHash (Pair) / RANDOM: Relative=1.09  |  Memory=1.19  |  Difference=-0.09
 

@@ -15,23 +15,19 @@ package Hash_Stats is
       Clustering_Ratio : Float);
    
    procedure Print_Key_Group_Stats(
-      Group_Name : String;
-      Min_Probes : Integer;
-      Max_Probes : Integer;
-      Avg_Probes : Float);
+      Group_Name : String;Min_Probes :
+       Integer;Max_Probes : Integer;
+       Avg_Probes : Float);
    
-   procedure Print_Theoretical_Results(
-      Load_Factor : Float;
-      Theoretical_Linear : Float;
-      Theoretical_Random : Float);
+   procedure Print_Theoretical_Results(Load_Factor : Float;Theoretical_Linear : Float;Theoretical_Random : Float);
    
    procedure Print_Actual_Results(Avg_Probes : Float);
    
    procedure Print_Comparison_Table(
       Table_Label : String;
       BL_First : Float; BL_Last : Float; BL_All : Float;
-      BR_First : Float; BR_Last : Float; BR_All : Float;
-      YL_First : Float; YL_Last : Float; YL_All : Float;
+       BR_First : Float; BR_Last: Float; BR_All : Float;
+      YL_First : Float; YL_Last : Float; YL_All: Float;
       YR_First : Float; YR_Last : Float; YR_All : Float);
    
    procedure Print_Storage_Comparison(

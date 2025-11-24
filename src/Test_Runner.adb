@@ -65,8 +65,8 @@ package body Test_Runner is
       else
          Hash_Stats.Print_Line("Algorithm: YourHash - sequential pair accumulation with weighted sum");
          Hash_Stats.Print_Line("Strategy: 8 character pairs (1-2, 3-4, ... 15-16) weighted by primes");
-         Hash_Stats.Print_Line("Weights: [131, 113, 101, 89, 79, 71, 61, 53] - descending for balance");
-         Hash_Stats.Print_Line("Method: Each pair combined (left*256 + right) and multiplied by weight");
+         Hash_Stats.Print_Line("Weights: [191, 167, 131, 83, 59, 31, 17, 7] - descending for balance");
+         Hash_Stats.Print_Line("Method: ASCII values concatenated as decimals (e.g., 'ab' -> 9798) then weighted");
          Hash_Stats.Print_Line("Goal: Better distribution across table, reduce clustering");
       end if;
       Hash_Stats.Print_Blank_Line;
@@ -106,22 +106,11 @@ package body Test_Runner is
          Load_Factor,
          Scenario_Stats.last_25_avg / Scenario_Stats.first_25_avg);
 
-      Hash_Stats.Print_Key_Group_Stats(
-         "FIRST 25 KEYS",
-         Scenario_Stats.first_25_min,
-         Scenario_Stats.first_25_max,
-         Scenario_Stats.first_25_avg);
+      Hash_Stats.Print_Key_Group_Stats("FIRST 25 KEYS",Scenario_Stats.first_25_min,Scenario_Stats.first_25_max, Scenario_Stats.first_25_avg);
 
-      Hash_Stats.Print_Key_Group_Stats(
-         "LAST 25 KEYS",
-         Scenario_Stats.last_25_min,
-         Scenario_Stats.last_25_max,
-         Scenario_Stats.last_25_avg);
+      Hash_Stats.Print_Key_Group_Stats("LAST 25 KEYS",Scenario_Stats.last_25_min,Scenario_Stats.last_25_max,Scenario_Stats.last_25_avg);
 
-      Hash_Stats.Print_Theoretical_Results(
-         Load_Factor,
-         Scenario_Stats.theoretical,
-         Scenario_Stats.theoretical_random);
+      Hash_Stats.Print_Theoretical_Results(Load_Factor,Scenario_Stats.theoretical,Scenario_Stats.theoretical_random);
 
       Hash_Stats.Print_Actual_Results(Scenario_Stats.all_75_avg);
 
@@ -142,23 +131,15 @@ package body Test_Runner is
       procedure Run_Mode(Mode : Storage_Mode) is
          Mode_Name : constant String := (case Mode is 
             when Relative_File => "Relative File",
-            when Main_Memory   => "Main Memory");
+            when Main_Memory  =>"Main Memory");
       begin
-         Run_Hash_Scenario(Linear, "LINEAR", Original_Hash, "BurrisHash (Orig)",
-                           Mode, Mode_Name,
-                           All_Stats(Mode, Original_Hash, Linear), Test_Keys);
+         Run_Hash_Scenario(Linear, "LINEAR", Original_Hash, "BurrisHash (Orig)", Mode, Mode_Name,  All_Stats(Mode, Original_Hash, Linear), Test_Keys);
 
-         Run_Hash_Scenario(Random_Probe, "RANDOM", Original_Hash, "BurrisHash (Orig)",
-                           Mode, Mode_Name,
-                           All_Stats(Mode, Original_Hash, Random_Probe), Test_Keys);
+         Run_Hash_Scenario(Random_Probe, "RANDOM", Original_Hash, "BurrisHash (Orig)", Mode, Mode_Name, All_Stats(Mode, Original_Hash, Random_Probe), Test_Keys);
 
-         Run_Hash_Scenario(Linear, "LINEAR", Pair_Hash, "YourHash (Pair)",
-                           Mode, Mode_Name,
-                           All_Stats(Mode, Pair_Hash, Linear), Test_Keys);
+         Run_Hash_Scenario(Linear, "LINEAR", Pair_Hash, "YourHash (Pair)", Mode, Mode_Name, All_Stats(Mode, Pair_Hash, Linear), Test_Keys);
 
-         Run_Hash_Scenario(Random_Probe, "RANDOM", Pair_Hash, "YourHash (Pair)",
-                           Mode, Mode_Name,
-                           All_Stats(Mode, Pair_Hash, Random_Probe), Test_Keys);
+         Run_Hash_Scenario(Random_Probe, "RANDOM", Pair_Hash, "YourHash (Pair)",Mode, Mode_Name, All_Stats(Mode, Pair_Hash, Random_Probe), Test_Keys);
 
          Hash_Stats.Print_Comparison_Table(
             Mode_Name,
